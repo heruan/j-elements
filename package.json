@@ -20,8 +20,13 @@
   "author": "Jouni Koivuviita <jouni@vaadin.com>",
   "license": "MIT",
   "dependencies": {
+    "@polymer/iron-icon": "^3.0.0-pre.18",
     "@polymer/polymer": "^3.0.0",
-    "@polymer/iron-icon": "^3.0.0-pre.18"
+    "@vaadin/vaadin-lumo-styles": "^1.0.0-pre.6",
+    "@vaadin/vaadin-overlay": "^3.0.2-pre.3",
+    "@vaadin/vaadin-themable-mixin": "^1.1.5-pre.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@vaadin/vaadin-button": "^2.0.0-pre.4"
+  }
 }

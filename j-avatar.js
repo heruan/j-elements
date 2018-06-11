@@ -1,11 +1,11 @@
 import { PolymerElement } from '../../@polymer/polymer/polymer-element.js';
-import { ThemableMixin } from '../../vaadin-themable-mixin/vaadin-themable-mixin.js';
+import { ThemableMixin } from '../../@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import '../../@polymer/iron-icon/iron-icon.js';
-import '../../vaadin-lumo-styles/font-icons.js';
-import '../../vaadin-lumo-styles/color.js';
-import '../../vaadin-lumo-styles/typography.js';
-import '../../vaadin-lumo-styles/sizing.js';
-import '../../vaadin-lumo-styles/style.js';
+import '../../@vaadin/vaadin-lumo-styles/font-icons.js';
+import '../../@vaadin/vaadin-lumo-styles/color.js';
+import '../../@vaadin/vaadin-lumo-styles/typography.js';
+import '../../@vaadin/vaadin-lumo-styles/sizing.js';
+import '../../@vaadin/vaadin-lumo-styles/style.js';
 import '../../@polymer/polymer/lib/elements/dom-if.js';
 import './j-tooltip.js';
 import { html } from '../../@polymer/polymer/lib/utils/html-tag.js';

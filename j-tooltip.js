@@ -1,12 +1,12 @@
 import { PolymerElement } from '../../@polymer/polymer/polymer-element.js';
-import { ThemableMixin } from '../../vaadin-themable-mixin/vaadin-themable-mixin.js';
-import '../../vaadin-overlay/vaadin-overlay.js';
-import '../../vaadin-lumo-styles/color.js';
-import '../../vaadin-lumo-styles/typography.js';
-import '../../vaadin-lumo-styles/style.js';
+import { ThemableMixin } from '../../@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import '../../@vaadin/vaadin-overlay/vaadin-overlay.js';
+import '../../@vaadin/vaadin-lumo-styles/color.js';
+import '../../@vaadin/vaadin-lumo-styles/typography.js';
+import '../../@vaadin/vaadin-lumo-styles/style.js';
 import { html } from '../../@polymer/polymer/lib/utils/html-tag.js';
 import { Templatize } from '../../@polymer/polymer/lib/utils/templatize.js';
-import { OverlayElement } from '../../vaadin-overlay/src/vaadin-overlay.js';
+import { OverlayElement } from '../../@vaadin/vaadin-overlay/src/vaadin-overlay.js';
 const $_documentContainer = document.createElement('template');
 $_documentContainer.setAttribute('style', 'display: none;');
 

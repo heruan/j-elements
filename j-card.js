@@ -1,10 +1,10 @@
 import { PolymerElement } from '../../@polymer/polymer/polymer-element.js';
-import { ThemableMixin } from '../../vaadin-themable-mixin/vaadin-themable-mixin.js';
-import '../../vaadin-lumo-styles/color.js';
-import '../../vaadin-lumo-styles/sizing.js';
-import '../../vaadin-lumo-styles/spacing.js';
-import '../../vaadin-lumo-styles/style.js';
-import '../../vaadin-lumo-styles/typography.js';
+import { ThemableMixin } from '../../@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
+import '../../@vaadin/vaadin-lumo-styles/color.js';
+import '../../@vaadin/vaadin-lumo-styles/sizing.js';
+import '../../@vaadin/vaadin-lumo-styles/spacing.js';
+import '../../@vaadin/vaadin-lumo-styles/style.js';
+import '../../@vaadin/vaadin-lumo-styles/typography.js';
 import { html } from '../../@polymer/polymer/lib/utils/html-tag.js';
 class CardElement extends ThemableMixin(PolymerElement) {
   static get template() {
