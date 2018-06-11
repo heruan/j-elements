@@ -3,16 +3,27 @@
   <title>j-elements demo</title>
   <meta name="viewport" content="width=device-width">
 
-  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
-  <link rel="import" href="../j-avatar.html">
-  <link rel="import" href="../j-card.html">
-  <link rel="import" href="../../vaadin-lumo-styles/typography.html">
-  <link rel="import" href="../../vaadin-lumo-styles/color.html">
-  <link rel="import" href="../../vaadin-lumo-styles/badge.html">
-  <link rel="import" href="../../vaadin-lumo-styles/icons.html">
-  <link rel="import" href="../../vaadin-button/vaadin-button.html">
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script type="module" src="../j-avatar.js"></script>
+  <script type="module" src="../j-card.js"></script>
+  <script type="module" src="../../../vaadin-lumo-styles/typography.js"></script>
+  <script type="module" src="../../../vaadin-lumo-styles/color.js"></script>
+  <script type="module" src="../../../vaadin-lumo-styles/badge.js"></script>
+  <script type="module" src="../../../vaadin-lumo-styles/icons.js"></script>
+  <script type="module" src="../../../vaadin-button/vaadin-button.js"></script>
 
-  <custom-style>
+  <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<custom-style>
     <style include="lumo-color lumo-typography lumo-badge">
       html {
         background-color: var(--lumo-contrast-10pct);
@@ -29,14 +40,24 @@
         margin: 1em;
       }
     </style>
-  </custom-style>
+  </custom-style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
 </head>
 
 <body>
 
-  <h1>Cards</h1>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<h1>Cards</h1>`;
+document.body.appendChild($_documentContainer.content);
+</script>
 
-  <section class="cards">
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<section class="cards">
 
     <j-card image="https://placeimg.com/480/320/nature">
       <div slot="header">Header</div>
@@ -123,59 +144,168 @@
       <vaadin-button theme="primary">Action</vaadin-button>
       <vaadin-button>Action</vaadin-button>
     </j-card>
-  </section>
+  </section>`;
 
-  <h1>Avatars</h1>
+document.body.appendChild($_documentContainer.content);
+</script>
 
-  <h2>Avatar types</h2>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<h1>Avatars</h1>`;
+document.body.appendChild($_documentContainer.content);
+</script>
+
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<h2>Avatar types</h2>`;
+document.body.appendChild($_documentContainer.content);
+</script>
   Empty:
-  <j-avatar></j-avatar>
-  <br>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<j-avatar></j-avatar>`;
+document.body.appendChild($_documentContainer.content);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<br>`;
+document.body.appendChild($_documentContainer.content);
+</script>
   Name:
-  <j-avatar name="User Name"></j-avatar>
-  <br>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<j-avatar name="User Name"></j-avatar>`;
+document.body.appendChild($_documentContainer.content);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<br>`;
+document.body.appendChild($_documentContainer.content);
+</script>
   Explicit abbreviation:
-  <j-avatar name="User Name" abbr="N"></j-avatar>
-  <br>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<j-avatar name="User Name" abbr="N"></j-avatar>`;
+document.body.appendChild($_documentContainer.content);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<br>`;
+document.body.appendChild($_documentContainer.content);
+</script>
   Image:
-  <j-avatar name="User Name" abbr="N" image="https://placeimg.com/80/80/people"></j-avatar>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<j-avatar name="User Name" abbr="N" image="https://placeimg.com/80/80/people"></j-avatar>`;
+document.body.appendChild($_documentContainer.content);
+</script>
 
 
-  <h2>Avatar sizes</h2>
-  <j-avatar theme="x-small" name="X Small"></j-avatar>
-  <j-avatar theme="small" name="Small"></j-avatar>
-  <j-avatar name="Medium"></j-avatar>
-  <j-avatar theme="large" name="Large"></j-avatar>
-  <j-avatar theme="x-large" name="X Large"></j-avatar>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<h2>Avatar sizes</h2>`;
+document.body.appendChild($_documentContainer.content);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<j-avatar theme="x-small" name="X Small"></j-avatar>`;
+document.body.appendChild($_documentContainer.content);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<j-avatar theme="small" name="Small"></j-avatar>`;
+document.body.appendChild($_documentContainer.content);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<j-avatar name="Medium"></j-avatar>`;
+document.body.appendChild($_documentContainer.content);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<j-avatar theme="large" name="Large"></j-avatar>`;
+document.body.appendChild($_documentContainer.content);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<j-avatar theme="x-large" name="X Large"></j-avatar>`;
+document.body.appendChild($_documentContainer.content);
+</script>
 
-  <h2>Avatar shapes</h2>
-  <j-avatar name="Circle"></j-avatar>
-  <j-avatar theme="rect" name="Rounded rectangle"></j-avatar>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<h2>Avatar shapes</h2>`;
+document.body.appendChild($_documentContainer.content);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<j-avatar name="Circle"></j-avatar>`;
+document.body.appendChild($_documentContainer.content);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<j-avatar theme="rect" name="Rounded rectangle"></j-avatar>`;
+document.body.appendChild($_documentContainer.content);
+</script>
 
 
-  <h2>Avatar group</h2>
-  <j-avatar-group>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<h2>Avatar group</h2>`;
+document.body.appendChild($_documentContainer.content);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<j-avatar-group>
     <j-avatar name="John Doe"></j-avatar>
     <j-avatar name="Mary Anderson"></j-avatar>
     <j-avatar name="Sarah Turner"></j-avatar>
-  </j-avatar-group>
+  </j-avatar-group>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
 
 
-  <h1>Tooltips</h1>
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<h1>Tooltips</h1>`;
+document.body.appendChild($_documentContainer.content);
+</script>
 
-  <p>I have a plaintext tooltip.
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<p>I have a plaintext tooltip.
     <j-tooltip text="Here it is!"></j-tooltip>
-  </p>
+  </p>`;
 
-  <p>I have a tooltip with HTML content.
+document.body.appendChild($_documentContainer.content);
+</script>
+
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<p>I have a tooltip with HTML content.
     <j-tooltip>
       <template>
         <j-avatar name="Avatar" theme="small"></j-avatar>
         <b>Here it is!</b> This tooltip has a lot to say.
       </template>
     </j-tooltip>
-  </p>
+  </p>`;
 
-  <br><br>
+document.body.appendChild($_documentContainer.content);
+</script>
+
+  <script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<br>`;
+document.body.appendChild($_documentContainer.content);
+</script><script type="module">
+const $_documentContainer = document.createElement('template');
+$_documentContainer.innerHTML = `<br>`;
+document.body.appendChild($_documentContainer.content);
+</script>
 
 </body>

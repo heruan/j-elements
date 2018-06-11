@@ -1,13 +1,14 @@
-<link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../vaadin-themable-mixin/vaadin-themable-mixin.html">
-<link rel="import" href="../vaadin-lumo-styles/color.html">
-<link rel="import" href="../vaadin-lumo-styles/sizing.html">
-<link rel="import" href="../vaadin-lumo-styles/spacing.html">
-<link rel="import" href="../vaadin-lumo-styles/style.html">
-<link rel="import" href="../vaadin-lumo-styles/typography.html">
-
-<dom-module id="j-card">
-  <template>
+import { PolymerElement } from '../../@polymer/polymer/polymer-element.js';
+import { ThemableMixin } from '../../vaadin-themable-mixin/vaadin-themable-mixin.js';
+import '../../vaadin-lumo-styles/color.js';
+import '../../vaadin-lumo-styles/sizing.js';
+import '../../vaadin-lumo-styles/spacing.js';
+import '../../vaadin-lumo-styles/style.js';
+import '../../vaadin-lumo-styles/typography.js';
+import { html } from '../../@polymer/polymer/lib/utils/html-tag.js';
+class CardElement extends ThemableMixin(PolymerElement) {
+  static get template() {
+    return html`
     <style>
       :host {
         display: flex;
@@ -174,13 +175,13 @@
       }
     </style>
 
-    <div part="header" hidden>
+    <div part="header" hidden="">
       <slot name="header"></slot>
     </div>
 
-    <div part="image" hidden$="[[!image]]" style="background-image: url([[image]]); padding-top: calc([[imageAspect]] * 100%);"></div>
+    <div part="image" hidden\$="[[!image]]" style="background-image: url([[image]]); padding-top: calc([[imageAspect]] * 100%);"></div>
 
-    <div class="j-card-title" hidden>
+    <div class="j-card-title" hidden="">
       <div class="j-card-title-spacer" style="padding-top: calc([[imageAspect]] * 100%);"></div>
       <div part="title">
         <slot name="title"></slot>
@@ -194,79 +195,71 @@
       <slot></slot>
     </div>
 
-    <div part="footer" hidden>
+    <div part="footer" hidden="">
       <slot name="footer"></slot>
     </div>
-  </template>
-  <script>
-    (function() {
-      class CardElement extends Vaadin.ThemableMixin(Polymer.Element) {
-        static get is() {
-          return 'j-card';
-        }
+`;
+  }
 
-        static get properties() {
-          return {
-            /* The main image for the card */
-            image: {
-              type: String,
-              value: null
-            },
+  static get is() {
+    return 'j-card';
+  }
 
-            /* The aspect ratio for the card image - e.g. 16:9 aspect is computed as `9/16` */
-            imageAspect: {
-              type: Number,
-              value: 0.5625 // 16:9
-            }
-          }
-        }
+  static get properties() {
+    return {
+      /* The main image for the card */
+      image: {
+        type: String,
+        value: null
+      },
 
-        ready() {
-          super.ready();
-
-          this.shadowRoot.querySelector('slot[name="header"]').addEventListener('slotchange', this._onSlotChange.bind(this));
-          this.shadowRoot.querySelector('slot[name="footer"]').addEventListener('slotchange', this._onSlotChange.bind(this));
-          this.shadowRoot.querySelector('slot[name="title"]').addEventListener('slotchange', this._onSlotChange.bind(this));
-
-          this._updatePartVisibility('header');
-          this._updatePartVisibility('footer');
-          this._updatePartVisibility('title');
-        }
-
-        _updatePartVisibility(slot) {
-          const slotHasContent = this.shadowRoot.querySelector(`slot[name="${slot}"]`).assignedNodes().length > 0;
-
-          let part;
-          switch(slot) {
-            case 'header':
-            case 'footer':
-              part = this.shadowRoot.querySelector(`[part="${slot}"]`);
-              break;
-            case 'title':
-              part = this.shadowRoot.querySelector('.j-card-title');
-          }
-
-          if (slotHasContent) {
-            part.removeAttribute('hidden')
-          } else {
-            part.setAttribute('hidden', '');
-          }
-        }
-
-        _onSlotChange(e) {
-          this._updatePartVisibility('header');
-          this._updatePartVisibility('footer');
-          this._updatePartVisibility('title');
-        }
+      /* The aspect ratio for the card image - e.g. 16:9 aspect is computed as `9/16` */
+      imageAspect: {
+        type: Number,
+        value: 0.5625 // 16:9
       }
+    }
+  }
 
-      customElements.define(CardElement.is, CardElement);
+  ready() {
+    super.ready();
 
-      /**
-       * @namespace Jouni
-       */
-      window.Jouni = window.Jouni || {};
-      Jouni.CardElement = CardElement;
-    })();
-  </script>
-</dom-module>
+    this.shadowRoot.querySelector('slot[name="header"]').addEventListener('slotchange', this._onSlotChange.bind(this));
+    this.shadowRoot.querySelector('slot[name="footer"]').addEventListener('slotchange', this._onSlotChange.bind(this));
+    this.shadowRoot.querySelector('slot[name="title"]').addEventListener('slotchange', this._onSlotChange.bind(this));
+
+    this._updatePartVisibility('header');
+    this._updatePartVisibility('footer');
+    this._updatePartVisibility('title');
+  }
+
+  _updatePartVisibility(slot) {
+    const slotHasContent = this.shadowRoot.querySelector(`slot[name="${slot}"]`).assignedNodes().length > 0;
+
+    let part;
+    switch(slot) {
+      case 'header':
+      case 'footer':
+        part = this.shadowRoot.querySelector(`[part="${slot}"]`);
+        break;
+      case 'title':
+        part = this.shadowRoot.querySelector('.j-card-title');
+    }
+
+    if (slotHasContent) {
+      part.removeAttribute('hidden')
+    } else {
+      part.setAttribute('hidden', '');
+    }
+  }
+
+  _onSlotChange(e) {
+    this._updatePartVisibility('header');
+    this._updatePartVisibility('footer');
+    this._updatePartVisibility('title');
+  }
+}
+
+customElements.define(CardElement.is, CardElement);
+
+export { CardElement };

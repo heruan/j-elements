@@ -1,16 +1,17 @@
-<link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="../vaadin-themable-mixin/vaadin-themable-mixin.html">
-<link rel="import" href="../iron-icon/iron-icon.html">
-<link rel="import" href="../vaadin-lumo-styles/font-icons.html">
-<link rel="import" href="../vaadin-lumo-styles/color.html">
-<link rel="import" href="../vaadin-lumo-styles/typography.html">
-<link rel="import" href="../vaadin-lumo-styles/sizing.html">
-<link rel="import" href="../vaadin-lumo-styles/style.html">
-<link rel="import" href="../polymer/lib/elements/dom-if.html">
-<link rel="import" href="j-tooltip.html">
-
-<dom-module id="j-avatar">
-  <template>
+import { PolymerElement } from '../../@polymer/polymer/polymer-element.js';
+import { ThemableMixin } from '../../vaadin-themable-mixin/vaadin-themable-mixin.js';
+import '../../@polymer/iron-icon/iron-icon.js';
+import '../../vaadin-lumo-styles/font-icons.js';
+import '../../vaadin-lumo-styles/color.js';
+import '../../vaadin-lumo-styles/typography.js';
+import '../../vaadin-lumo-styles/sizing.js';
+import '../../vaadin-lumo-styles/style.js';
+import '../../@polymer/polymer/lib/elements/dom-if.js';
+import './j-tooltip.js';
+import { html } from '../../@polymer/polymer/lib/utils/html-tag.js';
+class AvatarElement extends ThemableMixin(PolymerElement) {
+  static get template() {
+    return html`
     <style>
       :host {
         display: inline-flex;
@@ -32,7 +33,7 @@
 
       /* Ensure proper vertical alignment */
       :host::before {
-        content: "\2003";
+        content: "\\2003";
         display: inline-block;
         width: 0;
         overflow: hidden;
@@ -128,57 +129,51 @@
         <j-tooltip text="[[name]]"></j-tooltip>
       </template>
     </dom-if>
-  </template>
+`;
+  }
 
-  <script>
-    (function() {
-      class AvatarElement extends Vaadin.ThemableMixin(Polymer.Element) {
-        static get is() {
-          return 'j-avatar';
-        }
+  static get is() {
+    return 'j-avatar';
+  }
 
-        static get properties() {
-          return {
-            name: {
-              type: String,
-              observer: '_updateAbbr'
-            },
-            abbr: {
-              type: String,
-              observer: '_updateAbbr'
-            },
-            image: String,
-          }
-        }
+  static get properties() {
+    return {
+      name: {
+        type: String,
+        observer: '_updateAbbr'
+      },
+      abbr: {
+        type: String,
+        observer: '_updateAbbr'
+      },
+      image: String,
+    }
+  }
 
-        _updateAbbr() {
-          let abbr = this.abbr;
-          if (!abbr && this.name) {
-            // Match first character of each word
-            abbr = this.name.match(/\b\S/g).join('');
-          }
-          this.shadowRoot.querySelector('[part="abbr"]').textContent = abbr;
-        }
+  _updateAbbr() {
+    let abbr = this.abbr;
+    if (!abbr && this.name) {
+      // Match first character of each word
+      abbr = this.name.match(/\b\S/g).join('');
+    }
+    this.shadowRoot.querySelector('[part="abbr"]').textContent = abbr;
+  }
 
-        _hasTooltip(name, abbr) {
-          return this.name || this.abbr;
-        }
-      }
+  _hasTooltip(name, abbr) {
+    return this.name || this.abbr;
+  }
+}
 
-      customElements.define(AvatarElement.is, AvatarElement);
+customElements.define(AvatarElement.is, AvatarElement);
 
-      /**
-       * @namespace Jouni
-       */
-      window.Jouni = window.Jouni || {};
-      Jouni.AvatarElement = AvatarElement;
-    })();
-  </script>
-</dom-module>
+export { AvatarElement };
+export { AvatarGroupElement };
 
+customElements.define(AvatarGroupElement.is, AvatarGroupElement);
 
-<dom-module id="j-avatar-group">
-  <template>
+class AvatarGroupElement extends ThemableMixin(PolymerElement) {
+  static get template() {
+    return html`
     <style>
       :host {
         display: inline-flex;
@@ -207,28 +202,15 @@
       }
     </style>
     <slot></slot>
-  </template>
-  <script>
-    (function() {
-      class AvatarGroupElement extends Vaadin.ThemableMixin(Polymer.Element) {
-        static get is() {
-          return 'j-avatar-group';
-        }
+`;
+  }
 
-        static get properties() {
-          return {
-          }
-        }
+  static get is() {
+    return 'j-avatar-group';
+  }
 
-      }
-
-      customElements.define(AvatarGroupElement.is, AvatarGroupElement);
-
-      /**
-       * @namespace Jouni
-       */
-      window.Jouni = window.Jouni || {};
-      Jouni.AvatarGroupElement = AvatarGroupElement;
-    })();
-  </script>
-</dom-module>
+  static get properties() {
+    return {
+    }
+  }
+}
